@@ -1,5 +1,5 @@
 // electron 模块可以用来控制应用的生命周期和创建原生浏览窗口
-const { app, BrowserWindow } = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 
 const createWindow = () => {
@@ -11,7 +11,7 @@ const createWindow = () => {
             preload: path.join(__dirname, 'preload.js')
         }
     })
-
+    ipcMain.handle('ping', () => 'pong')
     // 加载 index.html
     mainWindow.loadFile('index.html')
 

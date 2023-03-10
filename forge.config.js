@@ -19,4 +19,17 @@ module.exports = {
       config: {},
     },
   ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'Touko-g',
+          name: 'electron',
+        },
+        prerelease: false,
+        draft: true,
+      },
+    },
+  ],
 };
