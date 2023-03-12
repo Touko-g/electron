@@ -6,3 +6,7 @@ contextBridge.exposeInMainWorld('versions', {
     electron: () => process.versions.electron,
     updateMessage: (callback) => ipcRenderer.on("update-message", callback),
 });
+
+window.myAPI = {
+    doAThing: () => console.log('123')
+}

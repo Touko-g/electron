@@ -24,9 +24,10 @@ const createWindow = () => {
 };
 
 const showMessage = (win, value) => {
-    win.webContents.send("update-message", value)
+    win&&win.webContents.send("update-message", value)
 }
 
+app.enableSandbox()
 
 app.whenReady().then(() => {
     createWindow();
@@ -37,10 +38,10 @@ app.whenReady().then(() => {
         }
     });
 
-    autoUpdater.checkForUpdates();
-
     showMessage(win, 'check-update')
 });
+
+autoUpdater.checkForUpdates();
 
 /*New Update Available*/
 autoUpdater.on("update-available", (info) => {
